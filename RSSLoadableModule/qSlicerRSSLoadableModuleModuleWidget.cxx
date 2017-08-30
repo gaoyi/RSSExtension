@@ -261,14 +261,11 @@ void qSlicerRSSLoadableModuleModuleWidget::applyPushButtonClicked()
     d->applyButton->setEnabled(false);
 
 
-    vtkMRMLNode* outputNode = d->OutputLabelVolumeMRMLNodeComboBox->currentNode();
-    vtkMRMLScalarVolumeNode* outputVolumeNode = vtkMRMLScalarVolumeNode::SafeDownCast(outputNode);
+    vtkMRMLLabelMapVolumeNode* outputVolumeNode =
+      vtkMRMLLabelMapVolumeNode::SafeDownCast(d->OutputLabelVolumeMRMLNodeComboBox->currentNode());
     outputVolumeNode->SetOrigin(inputVolumeNode->GetOrigin());
     outputVolumeNode->CopyOrientation(inputVolumeNode);
-
     outputVolumeNode->SetAndObserveImageData(m_rssPointer->mp_label_mask);
-    outputVolumeNode->SetLabelMap(1);
-
     outputVolumeNode->SetDisplayVisibility(1);
 
 
