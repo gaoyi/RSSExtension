@@ -351,14 +351,7 @@ vtkImageData* qSlicerRSSLoadableModuleModuleWidget::preprocessLabelMap(vtkImageD
     newLabelMap->SetSpacing(originalLabelMap->GetSpacing());
     newLabelMap->SetInformation(originalLabelMap->GetInformation());
     //    newLabelMap->SetExtent(originalLabelMap->GetExtent());
-    //#if VTK_MAJOR_VERSION <= 5
-    //    std::cout<<"VTK_MAJOR_VERSION <= 5\n";
-    newLabelMap->SetNumberOfScalarComponents(1);
-    newLabelMap->SetScalarTypeToShort();
-    newLabelMap->AllocateScalars();
-    //#else
-    //    newLabelMap->AllocateScalars(VTK_SHORT, 1);
-    //#endif
+    newLabelMap->AllocateScalars(VTK_SHORT, 1);
 
 
     short* newLabelMap_buffer_ptr = static_cast<short*>(newLabelMap->GetScalarPointer(startIdx));
