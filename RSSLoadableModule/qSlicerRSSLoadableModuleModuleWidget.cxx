@@ -207,7 +207,7 @@ void qSlicerRSSLoadableModuleModuleWidget::applyPushButtonClicked()
     vtkMRMLNode* inputNode = d->InputVolumeMRMLNodeComboBox->currentNode();
     vtkMRMLVolumeNode* inputVolumeNode = vtkMRMLVolumeNode::SafeDownCast(inputNode);
     vtkImageCast* castFilter = vtkImageCast::New();
-    castFilter->SetInput(inputVolumeNode->GetImageData());
+    castFilter->SetInputData(inputVolumeNode->GetImageData());
     castFilter->SetOutputScalarTypeToShort();// coz RSS input label is short pixel type
     castFilter->Update();
     vtkImageData* inputImageVTK = castFilter->GetOutput();
@@ -226,7 +226,7 @@ void qSlicerRSSLoadableModuleModuleWidget::applyPushButtonClicked()
     inputLableImageVtkNoOrientationInfo->SetInformation(inputImageVTK->GetInformation());
 
     vtkImageCast* castFilter1 = vtkImageCast::New();
-    castFilter1->SetInput(inputLableImageVtkNoOrientationInfo);
+    castFilter1->SetInputData(inputLableImageVtkNoOrientationInfo);
     castFilter1->SetOutputScalarTypeToShort(); // coz RSS input label is short pixel type
     castFilter1->Update();
     //    vtkImageData* inputLabelImageVtk = inputLabelVolumeNode->GetImageData();

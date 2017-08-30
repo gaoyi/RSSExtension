@@ -90,7 +90,7 @@ void CSFLSSegmentor3D::setNumIter(unsigned long n)
 void CSFLSSegmentor3D::setImage(vtkImageData* img)
 {
     vtkImageCast* castFilter = vtkImageCast::New();
-    castFilter->SetInput(img);
+    castFilter->SetInputData(img);
     castFilter->SetOutputScalarTypeToShort();
     castFilter->Update();
 

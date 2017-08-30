@@ -35,7 +35,7 @@ void
 CSFLSRobustStatSegmentor3DLabelMap::setInputLabelImage(vtkImageData* l)
 {
     vtkImageCast* castFilter = vtkImageCast::New();
-    castFilter->SetInput(l);
+    castFilter->SetInputData(l);
     castFilter->SetOutputScalarTypeToShort();
     castFilter->Update();
 
